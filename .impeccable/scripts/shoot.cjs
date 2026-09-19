@@ -18,7 +18,7 @@ const { chromium } = require('playwright');
   p.on('pageerror', e => errors.push('PAGEERROR: ' + e.message));
   p.on('console', m => { if (m.type() === 'error') errors.push('CONSOLE: ' + m.text()); });
 
-  await p.goto('http://localhost:5191', { waitUntil: 'networkidle' });
+  await p.goto('http://localhost:5193', { waitUntil: 'networkidle' });
   await p.waitForTimeout(2600);
   await p.screenshot({ path: `.impeccable/review/${prefix}0.png` });
 

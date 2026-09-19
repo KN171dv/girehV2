@@ -76,10 +76,13 @@ export function Barbers() {
     <section
       ref={ref}
       id="profissionais"
-      className="relative overflow-hidden bg-grafite py-24 pb-20 sm:py-32 sm:pb-24 lg:py-36 lg:pb-24"
+      className="seam-top relative overflow-hidden bg-grafite py-24 pb-20 sm:py-32 sm:pb-24 lg:py-36 lg:pb-24 [--seam-from:var(--color-carvao)]"
     >
       <div className="mx-auto max-w-[92rem] px-6 sm:px-10 lg:px-14">
         <div className="max-w-[46rem]">
+          <p className="marker mb-6">
+            Profissionais
+          </p>
           <h2
             data-heading
             className="max-w-[18ch] font-display text-[clamp(2rem,4.4vw,3.6rem)] leading-[1.06] tracking-[-0.02em] text-osso"

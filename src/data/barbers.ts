@@ -12,24 +12,24 @@ export const BARBERS: Barber[] = [
     id: "yuri",
     name: "Yuri",
     note: "Atenção a cada detalhe, sem pressa, até o corte ficar exatamente como você pediu.",
-    photo: "/upload/Yuri.png",
+    photo: "/img/Yuri.jpg",
   },
   {
     id: "ithalo",
     name: "Ithalo",
     note: "Régua e navalha com precisão, sempre no seu ritmo.",
-    photo: "/upload/Ithalo.png",
+    photo: "/img/Ithalo.jpg",
   },
   {
     id: "yago",
     name: "Yago",
     note: "Mão firme e olho afiado para cada linha do corte.",
-    photo: "/upload/Yago.png",
+    photo: "/img/Yago.jpg",
   },
   {
     id: "carlos",
     name: "Carlos",
     note: "Cuidado redobrado com quem senta na cadeira, do início ao acabamento.",
-    photo: "/upload/Carlos.png",
+    photo: "/img/Carlos.jpg",
   },
 ];

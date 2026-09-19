@@ -42,7 +42,7 @@ export function Trust() {
   const ref = useSectionMotion<HTMLElement>({ desktop: reveal, light: reveal });
 
   return (
-    <section ref={ref} className="relative overflow-hidden bg-grafite py-24 sm:py-32 lg:py-40">
+    <section ref={ref} className="seam-top relative overflow-hidden bg-grafite py-24 sm:py-32 lg:py-40 [--seam-from:var(--color-carvao)]">
       <div className="mx-auto max-w-[92rem] px-6 sm:px-10 lg:px-14">
         <span
           data-rule

@@ -14,14 +14,14 @@ type Shot = {
 
 const SHOTS: Shot[] = [
   {
-    src: "/upload/corte-masculino.jpg",
+    src: "/img/corte-masculino.jpg",
     alt: "Degradê masculino finalizado na Gireh Barber Shop",
     caption: "Degradê",
     width: "w-[74vw] sm:w-[46vw] lg:w-[26vw]",
     aspect: "aspect-[3/4]",
   },
   {
-    src: "/upload/detalhe-navalha.jpg",
+    src: "/img/detalhe-navalha.jpg",
     alt: "Mãos de barbeiro segurando navalha e tesoura",
     caption: "Navalha e tesoura",
     width: "w-[52vw] sm:w-[32vw] lg:w-[16vw]",
@@ -29,14 +29,14 @@ const SHOTS: Shot[] = [
     offset: "lg:translate-y-16",
   },
   {
-    src: "/upload/exemplo2.jpg",
+    src: "/img/exemplo2.jpg",
     alt: "Cliente de perfil após corte e barba",
     caption: "Corte e barba",
     width: "w-[74vw] sm:w-[46vw] lg:w-[24vw]",
     aspect: "aspect-[3/4.4]",
   },
   {
-    src: "/upload/detalhe-ferramentas.jpg",
+    src: "/img/detalhe-ferramentas.jpg",
     alt: "Bancada de trabalho com tesouras, pentes e pincéis",
     caption: "A bancada",
     width: "w-[84vw] sm:w-[56vw] lg:w-[32vw]",
@@ -44,7 +44,7 @@ const SHOTS: Shot[] = [
     offset: "lg:-translate-y-10",
   },
   {
-    src: "/upload/corte-barba.jpg",
+    src: "/img/corte-barba.jpg",
     alt: "Cliente com corte degradê e barba alinhada",
     caption: "Alinhamento",
     width: "w-[74vw] sm:w-[46vw] lg:w-[23vw]",
@@ -52,14 +52,7 @@ const SHOTS: Shot[] = [
     offset: "lg:translate-y-10",
   },
   {
-    src: "/upload/detalhe-logo.jpg",
-    alt: "Logotipo da Gireh bordado em dourado na capa de corte",
-    caption: "Desde 2015",
-    width: "w-[52vw] sm:w-[32vw] lg:w-[15vw]",
-    aspect: "aspect-square",
-  },
-  {
-    src: "/upload/acabamento.jpg",
+    src: "/img/acabamento.jpg",
     alt: "Acabamento de corte na nuca, finalizado",
     caption: "Acabamento",
     width: "w-[74vw] sm:w-[46vw] lg:w-[25vw]",
@@ -141,19 +134,27 @@ export function Gallery() {
   return (
     <section
       ref={ref}
+      id="galeria"
       aria-labelledby="galeria-titulo"
-      className="relative overflow-hidden bg-carvao py-24 sm:py-28 lg:flex lg:h-screen lg:flex-col lg:justify-center lg:py-0"
+      className="seam-top relative overflow-hidden bg-carvao py-24 sm:py-28 lg:flex lg:h-screen lg:flex-col lg:justify-center lg:py-0 [--seam-from:var(--color-grafite)]"
     >
       <div
         data-gallery-heading
         className="mx-auto mb-10 w-full max-w-[92rem] px-6 sm:px-10 lg:mb-14 lg:px-14"
       >
-        <h2
-          id="galeria-titulo"
-          className="font-display text-[clamp(1.75rem,3.4vw,2.75rem)] leading-tight tracking-[-0.02em] text-osso"
-        >
-          O trabalho, de perto.
-        </h2>
+        <p className="marker mb-5">
+          Galeria
+        </p>
+        <div className="flex flex-wrap items-baseline justify-between gap-4">
+          <h2
+            id="galeria-titulo"
+            className="font-display text-[clamp(1.75rem,3.4vw,2.75rem)] leading-tight tracking-[-0.02em] text-osso"
+          >
+            O trabalho, de perto.
+          </h2>
+          <p className="marker hidden lg:block">Arraste ou role</p>
+          <p className="marker lg:hidden">Arraste para o lado</p>
+        </div>
       </div>
 
       {/* Mobile: rolagem horizontal nativa com encaixe. Desktop: faixa movida pelo scroll. */}

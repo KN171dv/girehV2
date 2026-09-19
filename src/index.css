@@ -133,6 +133,43 @@
     padding-bottom: 0.14em;
     margin-bottom: -0.14em;
   }
+
+  /*
+    Microtipografia: a voz pequena da marca. Caixa alta com entreletra aberta,
+    usada como marcador editorial de seção e como assinatura, nunca como
+    rótulo colado em cima de cada título.
+  */
+  .marker {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    line-height: 1;
+    color: color-mix(in srgb, var(--color-osso) 45%, transparent);
+  }
+
+  .marker-accent {
+    color: var(--color-latao);
+  }
+
+  /* Costura entre seções: o corte de cor deixa de ser uma linha dura. */
+  .seam-top {
+    position: relative;
+  }
+  .seam-top::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 8rem;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      var(--seam-from, transparent),
+      transparent
+    );
+  }
 }
 
 @keyframes cue-travel {

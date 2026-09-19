@@ -85,7 +85,7 @@ export function Contact() {
       >
         <img
           data-bg-img
-          src="/upload/fachada-dia.jpg"
+          src="/img/fachada-dia.jpg"
           alt={`Entrada da ${BUSINESS_NAME}, na Alameda Campomar`}
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover object-center will-change-transform"
@@ -96,16 +96,22 @@ export function Contact() {
         />
 
         <div className="relative z-10 mx-auto w-full max-w-[92rem] px-6 pb-16 pt-28 sm:px-10 sm:pb-20 lg:px-14 lg:pb-24">
+          <p data-cta className="marker mb-6">
+            Agendamento
+          </p>
           <h2
             data-claim
             className="max-w-[15ch] font-display text-[clamp(2.2rem,6vw,4.75rem)] leading-[1.02] tracking-[-0.025em] text-osso"
           >
             Marque seu horário.
           </h2>
-          <div data-cta className="mt-10">
+          <div data-cta className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5">
             <WhatsAppButton href={waLink(DEFAULT_WA_MESSAGE)}>
               Agendar pelo WhatsApp
             </WhatsAppButton>
+            <p className="marker">
+              Rio das Ostras <span className="marker-accent">/ RJ</span>
+            </p>
           </div>
         </div>
       </div>
@@ -151,31 +157,39 @@ export function Contact() {
 
           <div data-block className="lg:col-span-3">
             <h3 className="font-display text-[1.35rem] text-osso">Contato</h3>
-            <p className="mt-4 text-[0.98rem] text-osso/70">{WHATSAPP_DISPLAY}</p>
-            <div className="mt-5 flex items-center gap-5">
-              <a
-                href={waLink(DEFAULT_WA_MESSAGE)}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Falar no WhatsApp"
-                className="text-osso/65 transition-all duration-300 hover:-translate-y-0.5 hover:text-latao focus-visible:outline-2 focus-visible:outline-offset-4"
-              >
-                <WhatsAppIcon className="h-[1.4rem] w-[1.4rem]" />
-              </a>
+            <a
+              href={waLink(DEFAULT_WA_MESSAGE)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/tel mt-4 inline-flex items-center gap-2.5 text-[0.98rem] text-osso/70 transition-colors duration-300 hover:text-osso focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              <WhatsAppIcon className="h-[1.05em] w-[1.05em] text-latao" />
+              <span className="relative">
+                {WHATSAPP_DISPLAY}
+                <span className="absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-latao transition-transform duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/tel:origin-left group-hover/tel:scale-x-100" />
+              </span>
+            </a>
+
+            {/* Instagram com tratamento próprio, não um ícone solto. */}
+            <div className="mt-9 border-t border-bronze/25 pt-6">
+              <p className="marker">Acompanhe a Gireh</p>
               <a
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Instagram ${INSTAGRAM_HANDLE}`}
-                className="text-osso/65 transition-all duration-300 hover:-translate-y-0.5 hover:text-latao focus-visible:outline-2 focus-visible:outline-offset-4"
+                className="group/ig mt-3 inline-flex items-center gap-3 focus-visible:outline-2 focus-visible:outline-offset-4"
               >
-                <InstagramIcon className="h-[1.4rem] w-[1.4rem]" />
+                <InstagramIcon className="h-[1.3rem] w-[1.3rem] text-osso/60 transition-colors duration-300 group-hover/ig:text-latao" />
+                <span className="relative font-display text-[1.25rem] text-osso transition-colors duration-300 group-hover/ig:text-latao">
+                  {INSTAGRAM_HANDLE}
+                  <span className="absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-latao transition-transform duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/ig:origin-left group-hover/ig:scale-x-100" />
+                </span>
               </a>
             </div>
           </div>
 
           <div data-block className="lg:col-span-3">
-            <div className="relative aspect-[4/3] overflow-hidden border border-bronze/30 lg:aspect-[3/4]">
+            <div className="relative aspect-[4/3] overflow-hidden border border-bronze/30 lg:aspect-[5/4]">
               <iframe
                 title={`Mapa de localização da ${BUSINESS_NAME}`}
                 src={MAPS_EMBED_SRC}
@@ -186,9 +200,38 @@ export function Contact() {
           </div>
         </div>
 
-        <p className="mt-20 border-t border-bronze/25 pt-8 text-[0.82rem] text-osso/60">
-          {BUSINESS_NAME} em Rio das Ostras/RJ, desde 2015
-        </p>
+        {/* Assinatura de fecho: a marca, o ano e a voz da casa, com ar em volta. */}
+        <div
+          data-block
+          className="mt-24 flex flex-col gap-10 border-t border-bronze/25 pt-12 sm:mt-28 lg:mt-32 lg:flex-row lg:items-end lg:justify-between"
+        >
+          <div className="flex items-center gap-6">
+            <img
+              src="/img/logo-transparente.png"
+              alt={BUSINESS_NAME}
+              width={461}
+              height={315}
+              loading="lazy"
+              className="h-14 w-auto opacity-90 sm:h-16"
+            />
+            <div className="border-l border-bronze/40 pl-6">
+              <p className="marker">Desde</p>
+              <p className="mt-1.5 font-display text-[1.6rem] leading-none text-latao">
+                2015
+              </p>
+            </div>
+          </div>
+
+          <p className="max-w-[26ch] font-serif text-[1.05rem] italic leading-relaxed text-osso/55">
+            Corte com rigor de alfaiate.
+          </p>
+
+          <p className="marker lg:text-right">
+            {BUSINESS_NAME}
+            <br />
+            <span className="marker-accent">Rio das Ostras / RJ</span>
+          </p>
+        </div>
       </div>
     </footer>
   );

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { WhatsAppIcon } from "./icons";
+import { ArrowIcon, WhatsAppIcon } from "./icons";
 
 type Variant = "solid" | "outline" | "quiet";
 
@@ -66,6 +66,16 @@ export function WhatsAppButton({
       <span aria-hidden="true" className={`${SWEEP} ${isSolid ? "bg-bordo" : "bg-bordo/45"}`} />
       <WhatsAppIcon className="relative h-[1.05em] w-[1.05em] shrink-0 transition-transform duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:-translate-y-px" />
       <span className="relative">{children}</span>
+      {/*
+        A seta não ocupa espaço em repouso: a largura abre no hover e ela
+        desliza para dentro. O rótulo continua sendo o que se lê.
+      */}
+      <span
+        aria-hidden="true"
+        className="relative inline-flex w-0 justify-end overflow-hidden opacity-0 transition-[width,opacity] duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:w-[1.15em] group-hover/btn:opacity-100 group-focus-visible/btn:w-[1.15em] group-focus-visible/btn:opacity-100"
+      >
+        <ArrowIcon className="h-[0.95em] w-[0.95em] shrink-0 -translate-x-2 transition-transform duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:translate-x-0 group-focus-visible/btn:translate-x-0" />
+      </span>
     </a>
   );
 }

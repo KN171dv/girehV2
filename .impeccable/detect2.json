@@ -1,0 +1,98 @@
+[
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Users\\KELVIN\\Pictures\\AXION\\SITES\\girehV2\\girehV2\\src\\components\\sections\\Barbers.tsx",
+    "line": 124,
+    "snippet": "text-[…] class: 1.6rem is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "1.6rem"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Users\\KELVIN\\Pictures\\AXION\\SITES\\girehV2\\girehV2\\src\\components\\sections\\Contact.tsx",
+    "line": 183,
+    "snippet": "text-[…] class: 1.25rem is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "1.25rem"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Users\\KELVIN\\Pictures\\AXION\\SITES\\girehV2\\girehV2\\src\\components\\sections\\Contact.tsx",
+    "line": 219,
+    "snippet": "text-[…] class: 1.6rem is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "1.6rem"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Users\\KELVIN\\Pictures\\AXION\\SITES\\girehV2\\girehV2\\src\\components\\sections\\Craft.tsx",
+    "line": 117,
+    "snippet": "text-[…] class: 1.6rem is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "1.6rem"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Users\\KELVIN\\Pictures\\AXION\\SITES\\girehV2\\girehV2\\src\\components\\sections\\Craft.tsx",
+    "line": 123,
+    "snippet": "text-[…] class: 1.6rem is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "1.6rem"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Users\\KELVIN\\Pictures\\AXION\\SITES\\girehV2\\girehV2\\src\\components\\sections\\Gallery.tsx",
+    "line": 180,
+    "snippet": "text-[…] class: 0.78rem is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "0.78rem"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Users\\KELVIN\\Pictures\\AXION\\SITES\\girehV2\\girehV2\\src\\components\\sections\\Hero.tsx",
+    "line": 154,
+    "snippet": "text-[…] class: 1.1rem is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "1.1rem"
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Users\\KELVIN\\Pictures\\AXION\\SITES\\girehV2\\girehV2\\src\\index.css",
+    "line": 144,
+    "snippet": "font-size: 0.68rem is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "0.68rem"
+  }
+]

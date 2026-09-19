@@ -11,7 +11,7 @@ const { chromium } = require("playwright");
   page.on("console", (m) => {
     if (m.type() === "error") errors.push("CONSOLE: " + m.text());
   });
-  await page.goto("http://localhost:5191", { waitUntil: "networkidle" });
+  await page.goto("http://localhost:5193", { waitUntil: "networkidle" });
   await page.waitForTimeout(2500);
 
   // Todos os links externos: destino e atributos de segurança
@@ -45,18 +45,13 @@ const { chromium } = require("playwright");
   });
 
   // Âncoras do menu levam às seções certas
-  const anchors = ["casa", "servicos", "profissionais", "contato"];
+  const anchors = ["oficio", "servicos", "profissionais", "galeria", "contato"];
   out.navegacao = {};
   for (const id of anchors) {
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.waitForTimeout(400);
     await page.locator("header nav button", { hasText: /./ }).first().waitFor();
-    const label = {
-      casa: "A casa",
-      servicos: "Serviços",
-      profissionais: "Profissionais",
-      contato: "Contato",
-    }[id];
+    const label = { oficio: "O ofício", servicos: "O menu", profissionais: "Profissionais", galeria: "Galeria", contato: "Contato" }[id];
     await page.locator("header nav button", { hasText: label }).click();
     await page.waitForTimeout(1800);
     out.navegacao[id] = await page.evaluate((sectionId) => {
@@ -109,7 +104,7 @@ const { chromium } = require("playwright");
     const p2 = await browser.newPage({ viewport: { width: w, height: 900 } });
     const errs = [];
     p2.on("pageerror", (e) => errs.push(e.message));
-    await p2.goto("http://localhost:5191", { waitUntil: "networkidle" });
+    await p2.goto("http://localhost:5193", { waitUntil: "networkidle" });
     await p2.waitForTimeout(2200);
     const info = await p2.evaluate(() => ({
       overflowHorizontal:

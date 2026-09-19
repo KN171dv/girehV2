@@ -8,10 +8,12 @@ import {
   waLink,
 } from "../data/site";
 
+// Cada item aponta para uma seção que existe de verdade na página.
 const LINKS = [
-  { id: "casa", label: "A casa" },
-  { id: "servicos", label: "Serviços" },
+  { id: "oficio", label: "O ofício" },
+  { id: "servicos", label: "O menu" },
   { id: "profissionais", label: "Profissionais" },
+  { id: "galeria", label: "Galeria" },
   { id: "contato", label: "Contato" },
 ];
 
@@ -79,12 +81,21 @@ export function SiteHeader() {
           <button
             type="button"
             onClick={() => go("topo")}
-            className="font-display text-[1.4rem] leading-none text-osso transition-opacity duration-300 hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-4"
+            aria-label="Gireh Barber Shop, voltar ao topo"
+            className="block shrink-0 transition-opacity duration-300 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4"
           >
-            Gireh
+            <img
+              src="/img/logo-transparente.png"
+              alt="Gireh Barber Shop"
+              width={461}
+              height={315}
+              className={`w-auto transition-[height] duration-500 ease-out ${
+                condensed ? "h-9 sm:h-10" : "h-11 sm:h-14"
+              }`}
+            />
           </button>
 
-          <nav className="hidden items-center gap-9 lg:flex">
+          <nav className="hidden items-center gap-7 lg:flex xl:gap-9">
             {LINKS.map((link) => (
               <button
                 key={link.id}

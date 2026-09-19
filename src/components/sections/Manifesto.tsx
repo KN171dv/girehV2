@@ -87,6 +87,32 @@ export function Manifesto() {
                 direta de quem já confia no serviço.
               </p>
             </div>
+
+            {/* Assinatura da casa: a marca e o ano como uma peça só. */}
+            <div
+              data-note
+              className="mt-14 flex items-center gap-6 border-t border-bronze/30 pt-8"
+            >
+              <img
+                src="/img/logo-transparente.png"
+                alt=""
+                aria-hidden="true"
+                width={461}
+                height={315}
+                className="h-12 w-auto opacity-90 sm:h-14"
+              />
+              <div className="border-l border-bronze/40 pl-6">
+                <p className="marker">Desde</p>
+                <p className="mt-1.5 font-display text-[1.9rem] leading-none text-latao sm:text-[2.2rem]">
+                  2015
+                </p>
+              </div>
+              <p className="marker ml-auto hidden text-right sm:block">
+                Rio das Ostras
+                <br />
+                <span className="marker-accent">RJ</span>
+              </p>
+            </div>
           </div>
 
           {/* A imagem sangra pela borda direita: composição, não cartão. */}
@@ -97,7 +123,7 @@ export function Manifesto() {
             >
               <img
                 data-figure-img
-                src="/upload/exemplo2.jpg"
+                src="/img/exemplo2.jpg"
                 alt="Cliente da Gireh Barber Shop após corte e barba, de perfil"
                 loading="lazy"
                 className="absolute inset-0 h-[116%] w-full object-cover object-center will-change-transform"

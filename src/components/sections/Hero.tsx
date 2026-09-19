@@ -107,7 +107,7 @@ export function Hero() {
       <div data-hero-media className="absolute inset-0 overflow-hidden">
         <img
           data-hero-image
-          src="/upload/fachada.png"
+          src="/img/fachada.jpg"
           alt={`Fachada da ${BUSINESS_NAME}, em Rio das Ostras`}
           fetchPriority="high"
           className="h-full w-full object-cover object-[28%_18%] will-change-transform sm:object-[center_28%]"
@@ -175,20 +175,23 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Elementos secundários discretos, alinhados à direita no desktop. */}
+          {/* Elementos secundários discretos, na voz pequena da marca. */}
           <div
             data-hero-after
-            className="flex gap-10 text-[0.82rem] leading-relaxed text-osso/55 lg:col-span-4 lg:flex-col lg:items-end lg:gap-4 lg:text-right"
+            className="flex flex-wrap gap-x-10 gap-y-5 lg:col-span-4 lg:flex-col lg:items-end lg:gap-5 lg:text-right"
           >
-            <p>
-              {ADDRESS.line1}
+            <p className="marker leading-[1.8]">
+              Rio das Ostras <span className="marker-accent">/ RJ</span>
               <br />
-              {ADDRESS.line2}
+              {ADDRESS.line1}
             </p>
-            <p>
+            <p className="marker leading-[1.8]">
               {HOURS[0].days}
               <br />
-              {HOURS[0].time}
+              <span className="text-osso/70">{HOURS[0].time}</span>
+            </p>
+            <p className="marker leading-[1.8]">
+              Desde <span className="marker-accent">2015</span>
             </p>
           </div>
         </div>
