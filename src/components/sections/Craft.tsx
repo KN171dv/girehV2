@@ -66,16 +66,23 @@ export function Craft() {
         {/*
           Composição editorial: uma placa vertical grande domina a cena, o texto
           respira à direita e um recorte menor cruza a placa por baixo, em outra
-          profundidade. No mobile a mesma hierarquia vira empilhamento.
+          profundidade.
+
+          A sobreposição de verdade só existe a partir de xl (1280px), onde há
+          espaço de sobra para ela. Abaixo disso a mesma hierarquia vira
+          sequência vertical: cada foto com o seu espaço, deslocadas na
+          horizontal para manter a profundidade, sem uma cortar a outra. O corte
+          era em lg (1024px), largura de tablet em paisagem e de celular em
+          "modo site para computador", onde a sobreposição lia como colisão.
         */}
-        <div className="relative lg:min-h-[46rem]">
-          <p data-body className="marker lg:absolute lg:left-0 lg:top-0">
+        <div className="relative xl:min-h-[46rem]">
+          <p data-body className="marker xl:absolute xl:left-0 xl:top-0">
             O ofício
           </p>
 
           <figure
             data-frame
-            className="relative mt-8 aspect-[3/4] overflow-hidden sm:aspect-[4/5] md:aspect-[5/4] lg:absolute lg:left-0 lg:top-14 lg:mt-0 lg:aspect-auto lg:h-[42rem] lg:w-[41%]"
+            className="relative mt-8 aspect-[3/4] overflow-hidden sm:aspect-[4/5] md:aspect-[5/4] md:w-[84%] xl:absolute xl:left-0 xl:top-14 xl:mt-0 xl:aspect-auto xl:h-[42rem] xl:w-[41%]"
           >
             <img
               src="/img/exemplo3.jpg"
@@ -94,7 +101,7 @@ export function Craft() {
             </figcaption>
           </figure>
 
-          <div className="mt-12 lg:absolute lg:right-0 lg:top-20 lg:mt-0 lg:w-[44%]">
+          <div className="mt-12 xl:absolute xl:right-0 xl:top-20 xl:mt-0 xl:w-[44%]">
             <h2
               data-heading
               className="max-w-[13ch] font-display text-[clamp(2rem,4.4vw,3.6rem)] leading-[1.06] tracking-[-0.02em] text-osso"
@@ -130,13 +137,15 @@ export function Craft() {
           </div>
 
           {/*
-            Recorte menor cruzando a placa grande. A borda na cor da seção abre
-            um respiro entre as duas camadas, que é o que faz a sobreposição ser
-            lida como decisão e não como colisão.
+            Recorte menor. Empilhado, ele desce alinhado à direita, deslocado da
+            placa grande na horizontal: profundidade por deslocamento, sem
+            cruzar nada. Só a partir de xl ele passa por cima da placa, e só aí
+            existe a borda na cor da seção — o respiro entre as duas camadas
+            existe onde há cruzamento, nunca como moldura.
           */}
           <figure
             data-frame
-            className="relative z-10 mt-12 ml-auto aspect-square w-[64%] overflow-hidden sm:w-[48%] md:aspect-[4/3] md:w-[46%] lg:absolute lg:bottom-10 lg:left-[24%] lg:m-0 lg:aspect-auto lg:h-[16rem] lg:w-[28%] lg:border-[10px] lg:border-grafite lg:shadow-[0_34px_80px_-34px_rgba(0,0,0,0.85)]"
+            className="relative z-10 mt-12 ml-auto aspect-square w-[64%] overflow-hidden sm:w-[48%] md:aspect-[4/3] md:w-[46%] xl:absolute xl:bottom-10 xl:left-[24%] xl:m-0 xl:aspect-auto xl:h-[16rem] xl:w-[28%] xl:border-[10px] xl:border-grafite xl:shadow-[0_34px_80px_-34px_rgba(0,0,0,0.85)]"
           >
             <img
               src="/img/exemplo1.jpg"
