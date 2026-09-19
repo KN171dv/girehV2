@@ -2,6 +2,35 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <!--
+      Abrir sempre do topo ao recarregar.
+
+      Por padrão o navegador guarda a posição de scroll e a devolve no F5, o que
+      no celular fazia a página reabrir no meio. Isto roda antes de qualquer
+      outra coisa da página, que é o único momento em que dá para desligar esse
+      comportamento a tempo: depois que o navegador restaura, já é tarde.
+
+      Não afeta os links do menu, que rolam por JS bem depois do carregamento.
+      Também não afeta o guard de posição de leitura no resize, que é outro
+      mecanismo, dentro da mesma sessão de JS.
+
+      Duas coisas medidas, para quem mexer aqui depois:
+
+      - "manual" também desliga a restauração no voltar do navegador. É o preço
+        dessa abordagem. Aqui não pesa: o site é uma página só, sem navegação
+        interna, e todo link externo abre em aba nova, então esse caminho
+        praticamente não acontece.
+      - O guarda de âncora abaixo é preventivo, não uma funcionalidade. Endereço
+        com âncora (…/#servicos) já não funcionava neste projeto antes deste
+        script: as seções são renderizadas pelo React depois da leitura do
+        <head>, então o navegador não encontra o alvo e desiste. O guarda existe
+        para que este script não seja o obstáculo caso isso venha a ser
+        resolvido.
+    -->
+    <script>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      if (!location.hash) window.scrollTo(0, 0);
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gireh Barber Shop | Barbearia em Rio das Ostras/RJ</title>
     <meta
