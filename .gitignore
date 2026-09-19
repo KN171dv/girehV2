@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Impeccable design skill: local-only config and transient QA screenshots
+.impeccable/config.local.json
+.impeccable/review/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
