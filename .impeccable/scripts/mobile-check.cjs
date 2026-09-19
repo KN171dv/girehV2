@@ -32,7 +32,7 @@ async function swipeUp(cdp, { x = 195, fromY = 700, toY = 200, steps = 12 } = {}
   });
 
   const cdp = await page.context().newCDPSession(page);
-  await page.goto("http://localhost:5193", { waitUntil: "networkidle" });
+  await page.goto("http://localhost:5195", { waitUntil: "networkidle" });
   await page.waitForTimeout(2600);
 
   // 1. Nenhum pin deve existir em mobile.

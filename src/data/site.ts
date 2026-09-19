@@ -31,7 +31,7 @@ export const HOURS = [
   { days: "Domingo", time: "Fechado" },
 ];
 
-export const HOME_SERVICE_NOTE = "Também atendemos a domicílio, sob consulta.";
+export const HOME_SERVICE_NOTE = "Também atendemos a domicílio.";
 
 export const INSTAGRAM_HANDLE = "@girehbarber";
 export const INSTAGRAM_URL = "https://www.instagram.com/girehbarber/";
@@ -44,4 +44,7 @@ export const GOOGLE_RATING = {
 };
 
 export const BUSINESS_NAME = "Gireh Barber Shop";
+
+/** Frase de posicionamento. Usada na abertura, no fecho e nos metadados. */
+export const POSITIONING = "Corte, barba e acabamento no detalhe.";
 export const FOUNDED_YEAR = 2015;

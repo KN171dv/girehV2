@@ -1,13 +1,9 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @import "@fontsource/libre-caslon-display/400.css";
 @import "@fontsource/libre-caslon-text/latin-400.css";
 @import "@fontsource/libre-caslon-text/latin-400-italic.css";
 @import "@fontsource-variable/archivo/wght.css";
-
-@custom-variant dark (&:is(.dark *));
 
 /*
   Gireh Barber Shop — sistema de marca "alfaiataria capilar".
@@ -40,9 +36,9 @@
   --font-serif: "Libre Caslon Text", Georgia, serif;
   --font-body: "Archivo Variable", "Archivo", system-ui, sans-serif;
 
-  --radius-sm: 2px;
-  --radius-md: 3px;
-  --radius-lg: 4px;
+  /* Curva única de interface: saída rápida, pouso macio. */
+  --ease-brand: cubic-bezier(0.16, 1, 0.3, 1);
+
 }
 
 :root {
@@ -146,7 +142,7 @@
     letter-spacing: 0.22em;
     text-transform: uppercase;
     line-height: 1;
-    color: color-mix(in srgb, var(--color-osso) 45%, transparent);
+    color: color-mix(in srgb, var(--color-osso) 62%, transparent);
   }
 
   .marker-accent {

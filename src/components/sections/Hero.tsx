@@ -1,11 +1,12 @@
 import { WhatsAppButton } from "../WhatsAppButton";
 import { useSectionMotion } from "../../lib/useSectionMotion";
 import type { MotionScope } from "../../lib/useSectionMotion";
-import { gsap, EASE, EASE_SOFT, revealLines, scrollToSection } from "../../lib/motion";
+import { gsap, EASE, EASE_SOFT, DUR, RISE, revealLines, scrollToSection } from "../../lib/motion";
 import {
   waLink,
   DEFAULT_WA_MESSAGE,
   BUSINESS_NAME,
+  POSITIONING,
   ADDRESS,
   HOURS,
 } from "../../data/site";
@@ -23,16 +24,16 @@ function entrance({ q1, q }: MotionScope) {
   const tl = gsap.timeline({ defaults: { ease: EASE } });
 
   if (media) {
-    tl.from(media, { scale: 1.16, opacity: 0.55, duration: 1.9, ease: EASE_SOFT }, 0);
+    tl.from(media, { scale: 1.1, opacity: 0.6, duration: DUR.hero, ease: EASE_SOFT }, 0);
   }
   if (headline) {
-    revealLines(headline, { duration: 1.15, stagger: 0.09, delay: 0.25 });
+    revealLines(headline, { duration: 1, delay: 0.15 });
   }
   if (rule) {
-    tl.from(rule, { scaleY: 0, duration: 0.9, transformOrigin: "top" }, 0.5);
+    tl.from(rule, { scaleY: 0, duration: DUR.settle, transformOrigin: "top" }, 0.4);
   }
   if (after.length) {
-    tl.from(after, { y: 18, opacity: 0, duration: 0.85, stagger: 0.09 }, 0.75);
+    tl.from(after, { y: RISE, opacity: 0, duration: DUR.settle, stagger: 0.07 }, 0.5);
   }
 }
 
@@ -52,8 +53,8 @@ function heroDesktop(scope: MotionScope) {
       image,
       { scale: 1, yPercent: 0 },
       {
-        scale: 1.16,
-        yPercent: 7,
+        scale: 1.1,
+        yPercent: 6,
         ease: "none",
         scrollTrigger: { trigger: root, start: "top top", end: "bottom top", scrub: 0.6 },
       },
@@ -104,13 +105,17 @@ export function Hero() {
       id="topo"
       className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-carvao"
     >
+      {/* Marcadores para os observadores do cabeçalho e do atalho de WhatsApp. */}
+      <span data-sentinel="header" aria-hidden="true" className="pointer-events-none absolute left-0 top-[60svh] h-px w-px" />
+      <span data-sentinel="fab" aria-hidden="true" className="pointer-events-none absolute left-0 top-[90svh] h-px w-px" />
+
       <div data-hero-media className="absolute inset-0 overflow-hidden">
         <img
           data-hero-image
           src="/img/fachada.jpg"
           alt={`Fachada da ${BUSINESS_NAME}, em Rio das Ostras`}
           fetchPriority="high"
-          className="h-full w-full object-cover object-[28%_18%] will-change-transform sm:object-[center_28%]"
+          className="h-full w-full object-cover object-[20%_50%] lg:will-change-transform sm:object-[28%_40%]"
         />
       </div>
 
@@ -118,6 +123,12 @@ export function Hero() {
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-t from-carvao via-carvao/45 to-carvao/5"
+      />
+      {/* Sombra lateral: firma o lado do texto sobre a fachada e apaga o brilho
+          do letreiro de neon atrás da linha de abertura. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,22,28,0.86)_0%,rgba(20,22,28,0.5)_38%,transparent_70%)]"
       />
       <div
         data-hero-veil
@@ -135,14 +146,21 @@ export function Hero() {
       >
         <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-8">
+            <p data-hero-after className="marker mb-5">
+              Barbearia em Rio das Ostras
+            </p>
+
             <h1
               data-hero-headline
-              className="max-w-[16ch] font-display text-[clamp(2.75rem,8.5vw,6.5rem)] leading-[0.98] tracking-[-0.02em] text-osso"
+              className="font-display text-[clamp(3.5rem,11vw,9rem)] leading-[0.9] tracking-[-0.03em] text-osso"
             >
-              Corte com rigor de alfaiate.
+              Gireh
             </h1>
+            <p data-hero-after className="marker marker-accent mt-4 !tracking-[0.34em]">
+              Barber Shop
+            </p>
 
-            <div className="mt-9 flex items-start gap-6">
+            <div className="mt-10 flex items-start gap-6">
               <span
                 data-hero-rule
                 aria-hidden="true"
@@ -151,15 +169,20 @@ export function Hero() {
               <div>
                 <p
                   data-hero-after
-                  className="max-w-[38ch] text-[1.02rem] leading-relaxed text-osso/85 sm:text-[1.1rem]"
+                  className="max-w-[20ch] font-display text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.15] text-osso"
                 >
-                  Onze anos de precisão discreta em Rio das Ostras, para quem já
-                  entende o valor de um bom acabamento.
+                  {POSITIONING}
+                </p>
+                <p
+                  data-hero-after
+                  className="mt-4 max-w-[36ch] text-[1rem] leading-relaxed text-osso/75"
+                >
+                  Agende pelo WhatsApp e escolha com quem você quer cortar.
                 </p>
 
                 <div data-hero-after className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
                   <WhatsAppButton href={waLink(DEFAULT_WA_MESSAGE)}>
-                    Agendar pelo WhatsApp
+                    Agendar horário
                   </WhatsAppButton>
 
                   <button
@@ -168,7 +191,7 @@ export function Hero() {
                     className="group/link relative font-body text-[0.92rem] text-osso/80 transition-colors duration-300 hover:text-osso focus-visible:outline-2 focus-visible:outline-offset-4"
                   >
                     Ver serviços e preços
-                    <span className="absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-latao transition-transform duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/link:origin-left group-hover/link:scale-x-100" />
+                    <span className="absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-latao transition-transform duration-300 ease-brand group-hover/link:origin-left group-hover/link:scale-x-100" />
                   </button>
                 </div>
               </div>
@@ -181,18 +204,16 @@ export function Hero() {
             className="flex flex-wrap gap-x-10 gap-y-5 lg:col-span-4 lg:flex-col lg:items-end lg:gap-5 lg:text-right"
           >
             <p className="marker leading-[1.8]">
-              Rio das Ostras <span className="marker-accent">/ RJ</span>
-              <br />
               {ADDRESS.line1}
+              <br />
+              <span className="text-osso/70">Cidade Praiana</span>
             </p>
             <p className="marker leading-[1.8]">
               {HOURS[0].days}
               <br />
               <span className="text-osso/70">{HOURS[0].time}</span>
             </p>
-            <p className="marker leading-[1.8]">
-              Desde <span className="marker-accent">2015</span>
-            </p>
+
           </div>
         </div>
       </div>

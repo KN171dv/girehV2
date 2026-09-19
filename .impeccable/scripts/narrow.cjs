@@ -6,7 +6,7 @@ const { chromium } = require("playwright");
     const p = await b.newPage({ viewport: { width: w, height: 700 }, hasTouch: true, isMobile: true, deviceScaleFactor: 2 });
     const errs = [];
     p.on("pageerror", e => errs.push(e.message));
-    await p.goto("http://localhost:5193", { waitUntil: "networkidle" });
+    await p.goto("http://localhost:5195", { waitUntil: "networkidle" });
     await p.waitForTimeout(2200);
     const info = await p.evaluate(() => {
       const de = document.documentElement;

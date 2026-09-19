@@ -3,7 +3,7 @@ import { waLink } from "../../data/site";
 import { WhatsAppButton } from "../WhatsAppButton";
 import { useSectionMotion } from "../../lib/useSectionMotion";
 import type { MotionScope } from "../../lib/useSectionMotion";
-import { gsap, EASE, revealLines } from "../../lib/motion";
+import { gsap, EASE, EASE_WIPE, DUR, RISE, revealLines } from "../../lib/motion";
 
 // Deslocamento vertical por coluna: quebra a grade uniforme de cartões.
 const OFFSET = ["lg:mt-0", "lg:mt-20", "lg:mt-8", "lg:mt-28"];
@@ -14,8 +14,6 @@ function reveal({ q1, q }: MotionScope, withParallax: boolean) {
 
   if (heading) {
     revealLines(heading, {
-      duration: 1,
-      stagger: 0.08,
       scrollTrigger: { trigger: heading, start: "top 82%" },
     });
   }
@@ -27,17 +25,17 @@ function reveal({ q1, q }: MotionScope, withParallax: boolean) {
     if (frame) {
       gsap.from(frame, {
         clipPath: "inset(100% 0% 0% 0%)",
-        duration: 1.15,
-        ease: "power3.inOut",
+        duration: DUR.wipe,
+        ease: EASE_WIPE,
         scrollTrigger: { trigger: card, start: "top 86%" },
       });
     }
 
     if (text.length) {
       gsap.from(text, {
-        y: 16,
+        y: RISE,
         opacity: 0,
-        duration: 0.75,
+        duration: DUR.settle,
         ease: EASE,
         stagger: 0.07,
         scrollTrigger: { trigger: card, start: "top 84%" },
@@ -50,7 +48,7 @@ function reveal({ q1, q }: MotionScope, withParallax: boolean) {
     // escrevessem em transform, o GSAP apagaria o hover.
     const layer = frame.querySelector<HTMLElement>("[data-card-layer]");
     if (!layer) return;
-    const depth = 5 + (index % 3) * 3;
+    const depth = 4 + (index % 3) * 1.5;
     gsap.fromTo(
       layer,
       { yPercent: -depth },
@@ -90,8 +88,8 @@ export function Barbers() {
             Escolha com quem sentar na cadeira.
           </h2>
           <p className="mt-5 max-w-[42ch] text-[1.02rem] leading-relaxed text-osso/70">
-            Quatro profissionais da casa. O agendamento vai direto para o nome
-            que você escolher.
+            São quatro na casa. O agendamento vai direto para o nome que você
+            escolher.
           </p>
         </div>
 
@@ -104,13 +102,13 @@ export function Barbers() {
               >
                 <div
                   data-card-layer
-                  className="absolute inset-0 h-[112%] w-full will-change-transform"
+                  className="absolute inset-0 h-[112%] w-full lg:will-change-transform"
                 >
                   <img
                     src={barber.photo}
                     alt={`${barber.name}, barbeiro da Gireh Barber Shop, em atendimento`}
                     loading="lazy"
-                    className="h-full w-full object-cover grayscale transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/photo:scale-[1.04]"
+                    className="h-full w-full object-cover grayscale transition-transform duration-500 ease-brand group-hover/photo:scale-[1.02]"
                   />
                 </div>
                 <div
@@ -125,14 +123,7 @@ export function Barbers() {
               >
                 {barber.name}
               </h3>
-              <p
-                data-card-text
-                className="mt-3 flex-1 text-[0.92rem] leading-relaxed text-osso/65"
-              >
-                {barber.note}
-              </p>
-
-              <div data-card-text className="mt-6">
+              <div data-card-text className="mt-5">
                 <WhatsAppButton
                   variant="outline"
                   href={waLink(`Olá! Gostaria de agendar com o ${barber.name}.`)}

@@ -11,7 +11,8 @@ export type MotionScope = {
   q1: <T extends HTMLElement = HTMLElement>(selector: string) => T | null;
 };
 
-type Build = (scope: MotionScope) => void;
+/** Pode devolver uma limpeza, chamada quando a media query deixa de valer. */
+type Build = (scope: MotionScope) => void | (() => void);
 
 type Options = {
   /** Efeitos completos: parallax, scrub, pin. Só rodam em desktop com mouse. */
@@ -49,19 +50,13 @@ export function useSectionMotion<T extends HTMLElement = HTMLElement>({
     const mm = gsap.matchMedia();
 
     if (desktop) {
-      mm.add(MQ.desktop, () => {
-        desktop(makeScope());
-      });
+      mm.add(MQ.desktop, () => desktop(makeScope()));
     }
 
     if (light) {
-      mm.add(MQ.mobile, () => {
-        light(makeScope());
-      });
+      mm.add(MQ.mobile, () => light(makeScope()));
       // Tablets e telas largas com toque: mesmo tratamento leve do mobile.
-      mm.add(MQ.touchWide, () => {
-        light(makeScope());
-      });
+      mm.add(MQ.touchWide, () => light(makeScope()));
     }
 
     ScrollTrigger.refresh();

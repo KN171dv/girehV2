@@ -1,6 +1,6 @@
 import { useSectionMotion } from "../../lib/useSectionMotion";
 import type { MotionScope } from "../../lib/useSectionMotion";
-import { gsap, EASE, revealLines } from "../../lib/motion";
+import { gsap, EASE, EASE_WIPE, DUR, RISE, revealLines } from "../../lib/motion";
 
 function reveal({ q1, q }: MotionScope, withParallax: boolean) {
   const heading = q1("[data-heading]");
@@ -9,17 +9,15 @@ function reveal({ q1, q }: MotionScope, withParallax: boolean) {
 
   if (heading) {
     revealLines(heading, {
-      duration: 1,
-      stagger: 0.08,
       scrollTrigger: { trigger: heading, start: "top 82%" },
     });
   }
 
   if (body.length) {
     gsap.from(body, {
-      y: 20,
+      y: RISE,
       opacity: 0,
-      duration: 0.85,
+      duration: DUR.settle,
       ease: EASE,
       stagger: 0.09,
       scrollTrigger: { trigger: body[0], start: "top 85%" },
@@ -29,8 +27,8 @@ function reveal({ q1, q }: MotionScope, withParallax: boolean) {
   frames.forEach((frame, index) => {
     gsap.from(frame, {
       clipPath: index === 0 ? "inset(0% 0% 100% 0%)" : "inset(100% 0% 0% 0%)",
-      duration: 1.25,
-      ease: "power3.inOut",
+      duration: DUR.wipe,
+      ease: EASE_WIPE,
       scrollTrigger: { trigger: frame, start: "top 88%" },
     });
 
@@ -39,7 +37,7 @@ function reveal({ q1, q }: MotionScope, withParallax: boolean) {
     // Camadas em velocidades diferentes: a de trás anda menos que a da frente.
     const img = frame.querySelector<HTMLElement>("img");
     if (!img) return;
-    const depth = index === 0 ? 6 : 11;
+    const depth = index === 0 ? 5 : 8;
     gsap.fromTo(
       img,
       { yPercent: -depth },
@@ -77,15 +75,21 @@ export function Craft() {
 
           <figure
             data-frame
-            className="relative mt-8 aspect-[3/4] overflow-hidden sm:aspect-[4/5] lg:absolute lg:left-0 lg:top-14 lg:mt-0 lg:aspect-auto lg:h-[42rem] lg:w-[41%]"
+            className="relative mt-8 aspect-[3/4] overflow-hidden sm:aspect-[4/5] md:aspect-[5/4] lg:absolute lg:left-0 lg:top-14 lg:mt-0 lg:aspect-auto lg:h-[42rem] lg:w-[41%]"
           >
             <img
               src="/img/exemplo3.jpg"
               alt="Detalhe de corte com risco feito à navalha na Gireh Barber Shop"
               loading="lazy"
-              className="absolute inset-0 h-[114%] w-full object-cover object-[55%_35%] will-change-transform"
+              className="absolute inset-0 h-[114%] w-full object-cover object-[55%_35%] lg:will-change-transform"
             />
-            <figcaption className="marker absolute left-4 top-4 text-osso/70">
+            {/* Véu curto no topo: a legenda cai sobre a parte clara da foto e
+                precisa de um chão tonal, não de uma caixa. */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-carvao/80 to-transparent"
+            />
+            <figcaption className="marker absolute left-4 top-4 text-osso/80">
               Risco à navalha
             </figcaption>
           </figure>
@@ -100,28 +104,26 @@ export function Craft() {
 
             <div className="mt-8 max-w-[44ch] space-y-5 text-[1.02rem] leading-relaxed text-osso/75">
               <p data-body>
-                Desde 2015 a Gireh corta em Rio das Ostras com a mesma ideia:
-                nada de pressa, nada por acaso. O corte é medido para a cabeça
-                e para o estilo de quem senta na cadeira, não para o relógio.
+                Um bom corte começa antes da máquina encostar: na conversa, no
+                formato do rosto e no jeito que o cabelo cresce.
               </p>
               <p data-body>
-                Máquina, tesoura e navalha fazem parte do mesmo desenho. O
-                acabamento é onde o trabalho aparece de verdade, e é onde a
-                gente não abre mão.
+                Depois vêm o desenho, a barba e o acabamento. Cada etapa no seu
+                tempo, sem atropelar a seguinte.
               </p>
             </div>
 
-            <dl data-body className="mt-12 flex gap-12 border-t border-bronze/30 pt-6">
+            <dl data-body className="mt-12 flex gap-8 border-t border-bronze/30 pt-6 sm:gap-12">
               <div>
-                <dt className="marker">Na cadeira</dt>
-                <dd className="mt-2 font-display text-[1.6rem] leading-none text-osso">
+                <dt className="marker">Atendimento</dt>
+                <dd className="mt-2 font-display text-[1.35rem] leading-none text-osso sm:text-[1.6rem]">
                   Hora marcada
                 </dd>
               </div>
               <div>
-                <dt className="marker">Acabamento</dt>
-                <dd className="mt-2 font-display text-[1.6rem] leading-none text-osso">
-                  Navalha
+                <dt className="marker">Também</dt>
+                <dd className="mt-2 font-display text-[1.35rem] leading-none text-osso sm:text-[1.6rem]">
+                  A domicílio
                 </dd>
               </div>
             </dl>
@@ -134,13 +136,13 @@ export function Craft() {
           */}
           <figure
             data-frame
-            className="relative z-10 -mt-12 ml-auto aspect-square w-[64%] overflow-hidden border-[6px] border-grafite sm:w-[48%] lg:absolute lg:bottom-10 lg:left-[24%] lg:m-0 lg:aspect-auto lg:h-[16rem] lg:w-[28%] lg:border-[10px] lg:shadow-[0_34px_80px_-34px_rgba(0,0,0,0.85)]"
+            className="relative z-10 mt-12 ml-auto aspect-square w-[64%] overflow-hidden sm:w-[48%] md:aspect-[4/3] md:w-[46%] lg:absolute lg:bottom-10 lg:left-[24%] lg:m-0 lg:aspect-auto lg:h-[16rem] lg:w-[28%] lg:border-[10px] lg:border-grafite lg:shadow-[0_34px_80px_-34px_rgba(0,0,0,0.85)]"
           >
             <img
               src="/img/exemplo1.jpg"
               alt="Barbeiro finalizando um degradê no salão da Gireh Barber Shop"
               loading="lazy"
-              className="absolute inset-0 h-[128%] w-full object-cover object-[60%_40%] will-change-transform"
+              className="absolute inset-0 h-[128%] w-full object-cover object-[60%_40%] lg:will-change-transform"
             />
           </figure>
         </div>

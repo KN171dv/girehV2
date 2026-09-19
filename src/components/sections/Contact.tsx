@@ -2,7 +2,7 @@ import { WhatsAppButton } from "../WhatsAppButton";
 import { WhatsAppIcon, InstagramIcon } from "../icons";
 import { useSectionMotion } from "../../lib/useSectionMotion";
 import type { MotionScope } from "../../lib/useSectionMotion";
-import { gsap, EASE, revealLines } from "../../lib/motion";
+import { gsap, EASE, DUR, RISE, revealLines } from "../../lib/motion";
 import {
   ADDRESS,
   HOURS,
@@ -15,6 +15,7 @@ import {
   waLink,
   DEFAULT_WA_MESSAGE,
   BUSINESS_NAME,
+  POSITIONING,
 } from "../../data/site";
 
 function reveal({ q1, q }: MotionScope, withParallax: boolean) {
@@ -26,17 +27,15 @@ function reveal({ q1, q }: MotionScope, withParallax: boolean) {
 
   if (claim) {
     revealLines(claim, {
-      duration: 1.1,
-      stagger: 0.09,
       scrollTrigger: { trigger: claim, start: "top 80%" },
     });
   }
 
   if (cta) {
     gsap.from(cta, {
-      y: 20,
+      y: RISE,
       opacity: 0,
-      duration: 0.85,
+      duration: DUR.settle,
       ease: EASE,
       scrollTrigger: { trigger: cta, start: "top 92%" },
     });
@@ -44,9 +43,9 @@ function reveal({ q1, q }: MotionScope, withParallax: boolean) {
 
   if (blocks.length) {
     gsap.from(blocks, {
-      y: 22,
+      y: RISE,
       opacity: 0,
-      duration: 0.8,
+      duration: DUR.settle,
       ease: EASE,
       stagger: 0.09,
       scrollTrigger: { trigger: blocks[0], start: "top 88%" },
@@ -56,10 +55,10 @@ function reveal({ q1, q }: MotionScope, withParallax: boolean) {
   if (withParallax && image && band) {
     gsap.fromTo(
       image,
-      { yPercent: -7, scale: 1.08 },
+      { yPercent: -5, scale: 1.04 },
       {
-        yPercent: 7,
-        scale: 1.14,
+        yPercent: 5,
+        scale: 1.08,
         ease: "none",
         scrollTrigger: { trigger: band, start: "top bottom", end: "bottom top", scrub: 0.8 },
       },
@@ -88,7 +87,7 @@ export function Contact() {
           src="/img/fachada-dia.jpg"
           alt={`Entrada da ${BUSINESS_NAME}, na Alameda Campomar`}
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover object-center will-change-transform"
+          className="absolute inset-0 h-full w-full object-cover object-center lg:will-change-transform"
         />
         <div
           aria-hidden="true"
@@ -107,7 +106,7 @@ export function Contact() {
           </h2>
           <div data-cta className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5">
             <WhatsAppButton href={waLink(DEFAULT_WA_MESSAGE)}>
-              Agendar pelo WhatsApp
+              Agendar horário
             </WhatsAppButton>
             <p className="marker">
               Rio das Ostras <span className="marker-accent">/ RJ</span>
@@ -126,7 +125,7 @@ export function Contact() {
               <br />
               {ADDRESS.line2}
               <br />
-              <span className="text-osso/45">{ADDRESS.zip}</span>
+              <span className="text-osso/60">{ADDRESS.zip}</span>
             </p>
             <a
               href={MAPS_URL}
@@ -134,8 +133,8 @@ export function Contact() {
               rel="noopener noreferrer"
               className="group/map relative mt-4 inline-block text-[0.88rem] text-latao focus-visible:outline-2 focus-visible:outline-offset-4"
             >
-              Ver no mapa
-              <span className="absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-100 bg-latao/40 transition-transform duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/map:origin-left group-hover/map:bg-latao" />
+              Como chegar
+              <span className="absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-100 bg-latao/40 transition-transform duration-300 ease-brand group-hover/map:origin-left group-hover/map:bg-latao" />
             </a>
           </div>
 
@@ -150,7 +149,7 @@ export function Contact() {
                 </p>
               ))}
             </div>
-            <p className="mt-4 text-[0.85rem] leading-relaxed text-osso/50">
+            <p className="mt-4 text-[0.85rem] leading-relaxed text-osso/65">
               {HOME_SERVICE_NOTE}
             </p>
           </div>
@@ -166,7 +165,7 @@ export function Contact() {
               <WhatsAppIcon className="h-[1.05em] w-[1.05em] text-latao" />
               <span className="relative">
                 {WHATSAPP_DISPLAY}
-                <span className="absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-latao transition-transform duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/tel:origin-left group-hover/tel:scale-x-100" />
+                <span className="absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-latao transition-transform duration-300 ease-brand group-hover/tel:origin-left group-hover/tel:scale-x-100" />
               </span>
             </a>
 
@@ -182,7 +181,7 @@ export function Contact() {
                 <InstagramIcon className="h-[1.3rem] w-[1.3rem] text-osso/60 transition-colors duration-300 group-hover/ig:text-latao" />
                 <span className="relative font-display text-[1.25rem] text-osso transition-colors duration-300 group-hover/ig:text-latao">
                   {INSTAGRAM_HANDLE}
-                  <span className="absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-latao transition-transform duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/ig:origin-left group-hover/ig:scale-x-100" />
+                  <span className="absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-latao transition-transform duration-300 ease-brand group-hover/ig:origin-left group-hover/ig:scale-x-100" />
                 </span>
               </a>
             </div>
@@ -222,8 +221,8 @@ export function Contact() {
             </div>
           </div>
 
-          <p className="max-w-[26ch] font-serif text-[1.05rem] italic leading-relaxed text-osso/55">
-            Corte com rigor de alfaiate.
+          <p className="max-w-[26ch] font-serif text-[1.05rem] italic leading-relaxed text-osso/65">
+            {POSITIONING}
           </p>
 
           <p className="marker lg:text-right">
@@ -232,6 +231,10 @@ export function Contact() {
             <span className="marker-accent">Rio das Ostras / RJ</span>
           </p>
         </div>
+
+        <p className="marker mt-14">
+          © {new Date().getFullYear()} {BUSINESS_NAME}
+        </p>
       </div>
     </footer>
   );

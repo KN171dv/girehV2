@@ -1,6 +1,6 @@
 import { useSectionMotion } from "../../lib/useSectionMotion";
 import type { MotionScope } from "../../lib/useSectionMotion";
-import { gsap, EASE, revealLines } from "../../lib/motion";
+import { gsap, EASE, EASE_WIPE, DUR, RISE, revealLines } from "../../lib/motion";
 
 function reveal({ root, q1, q }: MotionScope, withParallax: boolean) {
   const statement = q1("[data-statement]");
@@ -10,17 +10,15 @@ function reveal({ root, q1, q }: MotionScope, withParallax: boolean) {
 
   if (statement) {
     revealLines(statement, {
-      duration: 1.1,
-      stagger: 0.08,
       scrollTrigger: { trigger: statement, start: "top 78%" },
     });
   }
 
   if (note.length) {
     gsap.from(note, {
-      y: 22,
+      y: RISE,
       opacity: 0,
-      duration: 0.9,
+      duration: DUR.settle,
       ease: EASE,
       stagger: 0.1,
       scrollTrigger: { trigger: note[0], start: "top 85%" },
@@ -30,8 +28,8 @@ function reveal({ root, q1, q }: MotionScope, withParallax: boolean) {
   if (figure) {
     gsap.from(figure, {
       clipPath: "inset(100% 0% 0% 0%)",
-      duration: 1.3,
-      ease: "power3.inOut",
+      duration: DUR.wipe,
+      ease: EASE_WIPE,
       scrollTrigger: { trigger: figure, start: "top 82%" },
     });
   }
@@ -40,9 +38,9 @@ function reveal({ root, q1, q }: MotionScope, withParallax: boolean) {
   if (withParallax && image) {
     gsap.fromTo(
       image,
-      { yPercent: -8 },
+      { yPercent: -6 },
       {
-        yPercent: 8,
+        yPercent: 6,
         ease: "none",
         scrollTrigger: { trigger: figure ?? root, start: "top bottom", end: "bottom top", scrub: 0.8 },
       },
@@ -72,19 +70,17 @@ export function Manifesto() {
               data-statement
               className="max-w-[20ch] font-display text-[clamp(1.9rem,4.2vw,3.4rem)] leading-[1.14] tracking-[-0.015em] text-osso"
             >
-              Aqui, corte é medida. Cada cabeça tem um caimento e um jeito de
-              cair, e o trabalho começa lendo isso.
+              Uma barbearia para quem leva o próprio corte a sério.
             </p>
 
             <div className="mt-14 max-w-[52ch] space-y-5 text-[1.02rem] leading-relaxed text-osso/70">
               <p data-note>
-                Não trabalhamos por volume. Trabalhamos com hora marcada, no
-                ritmo de quem senta na cadeira, com a mesma exigência de um
-                alfaiate diante de um corte de tecido.
+                Desde 2015 na Cidade Praiana, em Rio das Ostras.
               </p>
               <p data-note>
-                É por isso que boa parte dos nossos clientes chega por indicação
-                direta de quem já confia no serviço.
+                Quatro profissionais, atendimento com hora marcada e
+                agendamento direto pelo WhatsApp. Você escolhe o serviço e com
+                quem quer cortar.
               </p>
             </div>
 
@@ -119,14 +115,14 @@ export function Manifesto() {
           <div className="lg:col-span-5">
             <figure
               data-figure
-              className="relative -mr-6 aspect-[4/5] overflow-hidden sm:-mr-10 lg:-mr-14 lg:aspect-[3/4]"
+              className="relative -mr-6 aspect-[4/5] overflow-hidden sm:-mr-10 md:aspect-[5/4] lg:-mr-14 lg:aspect-[3/4]"
             >
               <img
                 data-figure-img
                 src="/img/exemplo2.jpg"
                 alt="Cliente da Gireh Barber Shop após corte e barba, de perfil"
                 loading="lazy"
-                className="absolute inset-0 h-[116%] w-full object-cover object-center will-change-transform"
+                className="absolute inset-0 h-[116%] w-full object-cover object-[center_30%] lg:will-change-transform"
               />
               <div
                 aria-hidden="true"

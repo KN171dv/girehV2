@@ -2,7 +2,7 @@ import { StarIcon } from "../icons";
 import { GOOGLE_RATING } from "../../data/site";
 import { useSectionMotion } from "../../lib/useSectionMotion";
 import type { MotionScope } from "../../lib/useSectionMotion";
-import { gsap, EASE, revealLines } from "../../lib/motion";
+import { gsap, EASE, EASE_WIPE, DUR, RISE, revealLines } from "../../lib/motion";
 
 function reveal({ q1 }: MotionScope) {
   const quote = q1("[data-quote]");
@@ -11,8 +11,6 @@ function reveal({ q1 }: MotionScope) {
 
   if (quote) {
     revealLines(quote, {
-      duration: 1.15,
-      stagger: 0.1,
       scrollTrigger: { trigger: quote, start: "top 80%" },
     });
   }
@@ -20,8 +18,8 @@ function reveal({ q1 }: MotionScope) {
   if (rule) {
     gsap.from(rule, {
       scaleX: 0,
-      duration: 1.1,
-      ease: "power3.inOut",
+      duration: DUR.wipe,
+      ease: EASE_WIPE,
       transformOrigin: "left",
       scrollTrigger: { trigger: rule, start: "top 90%" },
     });
@@ -29,9 +27,9 @@ function reveal({ q1 }: MotionScope) {
 
   if (badge) {
     gsap.from(badge, {
-      y: 18,
+      y: RISE,
       opacity: 0,
-      duration: 0.8,
+      duration: DUR.settle,
       ease: EASE,
       scrollTrigger: { trigger: badge, start: "top 92%" },
     });
@@ -50,17 +48,18 @@ export function Trust() {
           className="block h-px w-full max-w-[38rem] bg-gradient-to-r from-latao/70 to-transparent"
         />
 
-        <blockquote
+        <p className="marker mt-12">Avaliações</p>
+        <p
           data-quote
-          className="mt-12 max-w-[24ch] font-display text-[clamp(1.9rem,4.6vw,3.6rem)] leading-[1.1] tracking-[-0.02em] text-osso"
+          className="mt-5 max-w-[20ch] font-display text-[clamp(1.9rem,4.6vw,3.6rem)] leading-[1.1] tracking-[-0.02em] text-osso"
         >
-          A confiança de quem já veio é o que traz quem vem depois.
-        </blockquote>
+          {GOOGLE_RATING.score} no Google, em {GOOGLE_RATING.reviews} avaliações.
+        </p>
 
         <div className="mt-14 flex flex-wrap items-end justify-between gap-8">
           <p className="max-w-[40ch] text-[1.02rem] leading-relaxed text-osso/70">
-            Grande parte dos agendamentos da casa começa com uma indicação
-            direta, de cliente para cliente.
+            Avaliações públicas de quem já cortou na Gireh, na ficha da
+            barbearia no Google.
           </p>
 
           <a
@@ -74,14 +73,12 @@ export function Trust() {
               {Array.from({ length: 5 }).map((_, index) => (
                 <StarIcon
                   key={index}
-                  className="h-3.5 w-3.5 transition-transform duration-500 ease-out group-hover/badge:-translate-y-0.5"
-                  style={{ transitionDelay: `${index * 40}ms` }}
+                  className="h-3.5 w-3.5 transition-transform duration-300 ease-brand group-hover/badge:-translate-y-0.5"
+                  style={{ transitionDelay: `${index * 25}ms` }}
                 />
               ))}
             </span>
-            <span className="text-[0.88rem]">
-              {GOOGLE_RATING.score} no Google, {GOOGLE_RATING.reviews} avaliações
-            </span>
+            <span className="text-[0.88rem]">Ler as avaliações</span>
           </a>
         </div>
       </div>

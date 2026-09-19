@@ -4,7 +4,7 @@ import { waLink } from "../../data/site";
 import { WhatsAppButton } from "../WhatsAppButton";
 import { useSectionMotion } from "../../lib/useSectionMotion";
 import type { MotionScope } from "../../lib/useSectionMotion";
-import { gsap, EASE, revealLines } from "../../lib/motion";
+import { gsap, EASE, EASE_WIPE, DUR, RISE, revealLines } from "../../lib/motion";
 
 function reveal({ q1, q }: MotionScope, withParallax: boolean) {
   const heading = q1("[data-heading]");
@@ -13,17 +13,15 @@ function reveal({ q1, q }: MotionScope, withParallax: boolean) {
 
   if (heading) {
     revealLines(heading, {
-      duration: 1,
-      stagger: 0.08,
       scrollTrigger: { trigger: heading, start: "top 82%" },
     });
   }
 
   if (rows.length) {
     gsap.from(rows, {
-      y: 26,
+      y: RISE,
       opacity: 0,
-      duration: 0.8,
+      duration: DUR.settle,
       ease: EASE,
       stagger: 0.07,
       scrollTrigger: { trigger: rows[0], start: "top 88%" },
@@ -33,8 +31,8 @@ function reveal({ q1, q }: MotionScope, withParallax: boolean) {
   if (panel) {
     gsap.from(panel, {
       clipPath: "inset(0% 0% 100% 0%)",
-      duration: 1.2,
-      ease: "power3.inOut",
+      duration: DUR.wipe,
+      ease: EASE_WIPE,
       scrollTrigger: { trigger: panel, start: "top 85%" },
     });
 
@@ -69,7 +67,7 @@ export function Menu() {
                     src={service.photo}
                     alt={`Resultado do serviço ${service.name} na Gireh Barber Shop`}
                     loading="lazy"
-                    className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${
+                    className={`absolute inset-0 h-full w-full object-cover transition-[opacity,scale] duration-500 ease-brand lg:will-change-transform ${
                       index === active
                         ? "scale-100 opacity-100"
                         : "scale-105 opacity-0"
@@ -95,7 +93,7 @@ export function Menu() {
               Cinco serviços, sem letra miúda.
             </h2>
             <p className="mt-5 max-w-[42ch] text-[1.02rem] leading-relaxed text-osso/70">
-              Escolha o serviço e fale direto com a barbearia. A mensagem já vai
+              Escolha o serviço e agende direto pelo WhatsApp. A mensagem já vai
               com o serviço escrito.
             </p>
 
@@ -111,11 +109,11 @@ export function Menu() {
                   {/* Fio que se desenha da esquerda no hover, sobre a divisória. */}
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-0 bottom-[-1px] h-px origin-left scale-x-0 bg-latao transition-transform duration-[520ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/row:scale-x-100 group-focus-within/row:scale-x-100"
+                    className="pointer-events-none absolute inset-x-0 bottom-[-1px] h-px origin-left scale-x-0 bg-latao transition-transform duration-300 ease-brand group-hover/row:scale-x-100 group-focus-within/row:scale-x-100"
                   />
 
                   {/* Faixa de imagem no mobile: a foto é composição, não miniatura */}
-                  <div className="relative mt-6 aspect-[16/9] overflow-hidden lg:hidden">
+                  <div className="relative mt-6 aspect-[16/9] overflow-hidden md:aspect-[21/9] lg:hidden">
                     <img
                       src={service.photo}
                       alt={`Resultado do serviço ${service.name} na Gireh Barber Shop`}
@@ -129,16 +127,19 @@ export function Menu() {
                   </div>
 
                   <div className="flex items-baseline gap-4 pb-6 pt-5 sm:gap-6 lg:py-7">
-                    <span className="marker mt-1 w-7 shrink-0 transition-all duration-500 ease-out group-hover/row:text-latao lg:group-hover/row:translate-x-1">
+                    <span className="marker mt-1 w-7 shrink-0 transition-[color,translate] duration-300 ease-brand group-hover/row:text-latao lg:group-hover/row:translate-x-1">
                       {String(index + 1).padStart(2, "0")}
                     </span>
 
-                    <div className="min-w-0 flex-1 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:group-hover/row:translate-x-2">
+                    <div className="min-w-0 flex-1 transition-transform duration-300 ease-brand lg:group-hover/row:translate-x-2">
                       <h3 className="font-display text-[1.5rem] leading-tight text-osso transition-colors duration-300 group-hover/row:text-latao sm:text-[1.75rem] lg:text-[2rem]">
                         {service.name}
                       </h3>
-                      <div className="mt-2.5 flex items-center gap-5">
-                        <span className="marker text-osso/40">
+                      <p className="mt-2 max-w-[40ch] text-[0.95rem] leading-relaxed text-osso/70">
+                        {service.note}
+                      </p>
+                      <div className="mt-3 flex items-center gap-5">
+                        <span className="marker">
                           {service.duration}
                         </span>
                         <WhatsAppButton
@@ -146,12 +147,12 @@ export function Menu() {
                           href={waLink(serviceMessage(service))}
                           ariaLabel={`Agendar ${service.name} pelo WhatsApp`}
                         >
-                          Agendar
+                          {service.cta}
                         </WhatsAppButton>
                       </div>
                     </div>
 
-                    <span className="shrink-0 font-display text-[1.5rem] tabular-nums text-latao transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:text-[1.75rem] lg:text-[2rem] lg:group-hover/row:-translate-x-1">
+                    <span className="shrink-0 font-display text-[1.5rem] tabular-nums text-latao transition-transform duration-300 ease-brand sm:text-[1.75rem] lg:text-[2rem] lg:group-hover/row:-translate-x-1">
                       {formatPrice(service.price)}
                     </span>
                   </div>
