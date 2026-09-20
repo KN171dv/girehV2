@@ -53,7 +53,7 @@ export function Menu() {
     <section
       ref={ref}
       id="servicos"
-      className="seam-top relative overflow-hidden bg-carvao py-24 sm:py-32 lg:py-36 [--seam-from:var(--color-grafite)]"
+      className="seam-top relative overflow-hidden bg-carvao py-20 sm:py-32 lg:py-36 [--seam-from:var(--color-grafite)]"
     >
       <div className="mx-auto max-w-[92rem] px-6 sm:px-10 lg:px-14">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">

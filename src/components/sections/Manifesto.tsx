@@ -61,7 +61,7 @@ export function Manifesto() {
     <section
       ref={ref}
       id="casa"
-      className="relative overflow-hidden bg-carvao py-24 sm:py-32 lg:py-40"
+      className="relative overflow-hidden bg-carvao py-20 sm:py-32 lg:py-40"
     >
       <div className="mx-auto max-w-[92rem] px-6 sm:px-10 lg:px-14">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-10">

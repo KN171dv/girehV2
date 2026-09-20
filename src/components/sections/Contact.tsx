@@ -202,7 +202,7 @@ export function Contact() {
         {/* Assinatura de fecho: a marca, o ano e a voz da casa, com ar em volta. */}
         <div
           data-block
-          className="mt-24 flex flex-col gap-10 border-t border-bronze/25 pt-12 sm:mt-28 lg:mt-32 lg:flex-row lg:items-end lg:justify-between"
+          className="mt-14 flex flex-col gap-10 border-t border-bronze/25 pt-10 sm:mt-24 sm:pt-12 lg:mt-32 lg:flex-row lg:items-end lg:justify-between"
         >
           <div className="flex items-center gap-6">
             <img

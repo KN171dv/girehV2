@@ -39,8 +39,12 @@ function reveal({ q1 }: MotionScope) {
 export function Trust() {
   const ref = useSectionMotion<HTMLElement>({ desktop: reveal, light: reveal });
 
+  // Topo mais curto que a base em tela estreita: o fio dourado logo abaixo é a
+  // abertura da seção e funciona como divisória entre ela e a galeria, então
+  // precisa ficar perto do que veio antes para ser lido como transição em vez
+  // de flutuar no meio de um vazio.
   return (
-    <section ref={ref} className="seam-top relative overflow-hidden bg-grafite py-24 sm:py-32 lg:py-40 [--seam-from:var(--color-carvao)]">
+    <section ref={ref} className="seam-top relative overflow-hidden bg-grafite pb-20 pt-14 sm:py-32 lg:py-40 [--seam-from:var(--color-carvao)]">
       <div className="mx-auto max-w-[92rem] px-6 sm:px-10 lg:px-14">
         <span
           data-rule
@@ -48,7 +52,7 @@ export function Trust() {
           className="block h-px w-full max-w-[38rem] bg-gradient-to-r from-latao/70 to-transparent"
         />
 
-        <p className="marker mt-12">Avaliações</p>
+        <p className="marker mt-8 sm:mt-12">Avaliações</p>
         <p
           data-quote
           className="mt-5 max-w-[20ch] font-display text-[clamp(1.9rem,4.6vw,3.6rem)] leading-[1.1] tracking-[-0.02em] text-osso"

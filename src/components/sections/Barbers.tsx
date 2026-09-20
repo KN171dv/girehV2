@@ -74,7 +74,7 @@ export function Barbers() {
     <section
       ref={ref}
       id="profissionais"
-      className="seam-top relative overflow-hidden bg-grafite py-24 pb-20 sm:py-32 sm:pb-24 lg:py-36 lg:pb-24 [--seam-from:var(--color-carvao)]"
+      className="seam-top relative overflow-hidden bg-grafite py-20 pb-16 sm:py-32 sm:pb-24 lg:py-36 lg:pb-24 [--seam-from:var(--color-carvao)]"
     >
       <div className="mx-auto max-w-[92rem] px-6 sm:px-10 lg:px-14">
         <div className="max-w-[46rem]">

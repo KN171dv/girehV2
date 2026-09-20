@@ -162,7 +162,7 @@ export function Gallery() {
       ref={ref}
       id="galeria"
       aria-labelledby="galeria-titulo"
-      className="seam-top relative bg-carvao py-24 sm:py-28 lg:py-0 [--seam-from:var(--color-grafite)]"
+      className="seam-top relative bg-carvao py-20 sm:py-28 lg:py-0 [--seam-from:var(--color-grafite)]"
     >
       <div
         data-stage

@@ -60,7 +60,7 @@ export function Craft() {
     <section
       ref={ref}
       id="oficio"
-      className="seam-top relative overflow-hidden bg-grafite py-24 sm:py-32 lg:py-36 [--seam-from:var(--color-carvao)]"
+      className="seam-top relative overflow-hidden bg-grafite py-20 sm:py-32 lg:py-36 [--seam-from:var(--color-carvao)]"
     >
       <div className="mx-auto max-w-[92rem] px-6 sm:px-10 lg:px-14">
         {/*
@@ -137,21 +137,28 @@ export function Craft() {
           </div>
 
           {/*
-            Recorte menor. Empilhado, ele desce alinhado à direita, deslocado da
-            placa grande na horizontal: profundidade por deslocamento, sem
-            cruzar nada. Só a partir de xl ele passa por cima da placa, e só aí
-            existe a borda na cor da seção — o respiro entre as duas camadas
+            Recorte de fecho, com três composições próprias.
+
+            Em tela estreita ele é uma faixa larga que sangra até a borda
+            direita e fecha a seção: cheia de imagem, sem cunha vazia ao lado.
+            Antes ele era um quadrado de 64% encostado à direita, que era a
+            placa do desktop encolhida — deixava um vazio morto à esquerda e
+            fazia o vão até a próxima seção parecer o dobro do que é.
+
+            De md a lg ele recolhe para 46% alinhado à direita, deslocado da
+            placa grande na horizontal. Só a partir de xl passa por cima dela,
+            e só aí existe a borda na cor da seção: o respiro entre camadas
             existe onde há cruzamento, nunca como moldura.
           */}
           <figure
             data-frame
-            className="relative z-10 mt-12 ml-auto aspect-square w-[64%] overflow-hidden sm:w-[48%] md:aspect-[4/3] md:w-[46%] xl:absolute xl:bottom-10 xl:left-[24%] xl:m-0 xl:aspect-auto xl:h-[16rem] xl:w-[28%] xl:border-[10px] xl:border-grafite xl:shadow-[0_34px_80px_-34px_rgba(0,0,0,0.85)]"
+            className="relative z-10 -mr-6 mt-10 aspect-[16/10] overflow-hidden sm:-mr-10 md:ml-auto md:mr-0 md:mt-12 md:aspect-[4/3] md:w-[46%] xl:absolute xl:bottom-10 xl:left-[24%] xl:m-0 xl:aspect-auto xl:h-[16rem] xl:w-[28%] xl:border-[10px] xl:border-grafite xl:shadow-[0_34px_80px_-34px_rgba(0,0,0,0.85)]"
           >
             <img
               src="/img/exemplo1.jpg"
               alt="Barbeiro finalizando um degradê no salão da Gireh Barber Shop"
               loading="lazy"
-              className="absolute inset-0 h-[128%] w-full object-cover object-[60%_40%] lg:will-change-transform"
+              className="absolute inset-0 h-[128%] w-full object-cover object-[58%_46%] md:object-[60%_40%] lg:will-change-transform"
             />
           </figure>
         </div>
