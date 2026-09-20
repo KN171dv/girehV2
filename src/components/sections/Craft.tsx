@@ -139,11 +139,17 @@ export function Craft() {
           {/*
             Recorte de fecho, com três composições próprias.
 
-            Em tela estreita ele é uma faixa larga que sangra até a borda
-            direita e fecha a seção: cheia de imagem, sem cunha vazia ao lado.
-            Antes ele era um quadrado de 64% encostado à direita, que era a
-            placa do desktop encolhida — deixava um vazio morto à esquerda e
-            fazia o vão até a próxima seção parecer o dobro do que é.
+            Em tela estreita ele é uma faixa larga que fecha a seção, na mesma
+            largura de coluna de todas as outras fotos do site: cheia de
+            imagem, sem cunha vazia ao lado. Antes era um quadrado de 64%
+            encostado à direita, que era a placa do desktop encolhida — deixava
+            um vazio morto à esquerda.
+
+            Não sangra para fora da coluna. Uma versão anterior levava a faixa
+            até a borda da tela, e o excedente de 24px em relação à foto grande
+            logo acima lia como uma tira de outra imagem escapando pela
+            lateral, porque quebrava a única linha de alinhamento que o resto
+            da página respeita.
 
             De md a lg ele recolhe para 46% alinhado à direita, deslocado da
             placa grande na horizontal. Só a partir de xl passa por cima dela,
@@ -152,7 +158,7 @@ export function Craft() {
           */}
           <figure
             data-frame
-            className="relative z-10 -mr-6 mt-10 aspect-[16/10] overflow-hidden sm:-mr-10 md:ml-auto md:mr-0 md:mt-12 md:aspect-[4/3] md:w-[46%] xl:absolute xl:bottom-10 xl:left-[24%] xl:m-0 xl:aspect-auto xl:h-[16rem] xl:w-[28%] xl:border-[10px] xl:border-grafite xl:shadow-[0_34px_80px_-34px_rgba(0,0,0,0.85)]"
+            className="relative z-10 mt-10 aspect-[16/10] overflow-hidden md:ml-auto md:mt-12 md:aspect-[4/3] md:w-[46%] xl:absolute xl:bottom-10 xl:left-[24%] xl:m-0 xl:aspect-auto xl:h-[16rem] xl:w-[28%] xl:border-[10px] xl:border-grafite xl:shadow-[0_34px_80px_-34px_rgba(0,0,0,0.85)]"
           >
             <img
               src="/img/exemplo1.jpg"
