@@ -84,10 +84,20 @@ export function Manifesto() {
               </p>
             </div>
 
-            {/* Assinatura da casa: a marca e o ano como uma peça só. */}
+            {/*
+              Assinatura da casa: a marca e o ano como uma peça só.
+
+              Abaixo de sm a terceira coluna ("Rio das Ostras / RJ") não é
+              exibida, e era ela que, com ml-auto, fechava a linha do outro
+              lado. Sem ela a peça ficava encostada à esquerda com um vazio
+              grande à direita, como se faltasse alguma coisa. Em tela estreita
+              a dupla passa a ser centrada como um conjunto — o alinhamento é do
+              grupo, não de cada parte — e a partir de sm a linha volta a abrir
+              da esquerda, onde a terceira coluna existe para equilibrá-la.
+            */}
             <div
               data-note
-              className="mt-14 flex items-center gap-6 border-t border-bronze/30 pt-8"
+              className="mt-14 flex items-center justify-center gap-6 border-t border-bronze/30 pt-8 sm:justify-start"
             >
               <img
                 src="/img/logo-transparente.png"
@@ -111,11 +121,21 @@ export function Manifesto() {
             </div>
           </div>
 
-          {/* A imagem sangra pela borda direita: composição, não cartão. */}
+          {/*
+            A imagem sangra pela calha direita a partir de lg, onde ela ocupa a
+            última coluna do grid de 12 e a sangria é a composição: imagem, não
+            cartão.
+
+            Abaixo de lg não há grid e não há calha para romper, então a
+            sangria só deixava 24px de um lado e zero do outro, fazendo a foto
+            parecer deslocada. Em tela estreita ela fica na largura de coluna,
+            com a mesma margem dos dois lados, como todas as outras fotos
+            empilhadas da página.
+          */}
           <div className="lg:col-span-5">
             <figure
               data-figure
-              className="relative -mr-6 aspect-[4/5] overflow-hidden sm:-mr-10 md:aspect-[5/4] lg:-mr-14 lg:aspect-[3/4]"
+              className="relative aspect-[4/5] overflow-hidden md:aspect-[5/4] lg:-mr-14 lg:aspect-[3/4]"
             >
               <img
                 data-figure-img
