@@ -18,7 +18,7 @@ const SHOTS: Shot[] = [
   {
     src: "/img/corte-masculino.jpg",
     lgHeight: "lg:h-[min(34.6vw,52svh)]",
-    alt: "Corte masculino finalizado, visto de trás",
+    alt: "Corte masculino finalizado, visto de trás, na Gireh Barber Shop",
     caption: "Corte",
     width: "w-[74vw] sm:w-[46vw] lg:w-auto",
     aspect: "aspect-[3/4]",
@@ -26,7 +26,7 @@ const SHOTS: Shot[] = [
   {
     src: "/img/detalhe-navalha.jpg",
     lgHeight: "lg:h-[min(18vw,28svh)]",
-    alt: "Mãos de barbeiro segurando navalha e tesoura",
+    alt: "Mãos de barbeiro da Gireh Barber Shop segurando navalha e tesoura",
     caption: "Navalha",
     width: "w-[52vw] sm:w-[32vw] lg:w-auto",
     aspect: "aspect-[7/8]",
@@ -35,7 +35,7 @@ const SHOTS: Shot[] = [
   {
     src: "/img/exemplo2.jpg",
     lgHeight: "lg:h-[min(35vw,54svh)]",
-    alt: "Cliente de perfil após corte e barba",
+    alt: "Cliente da Gireh Barber Shop, de perfil, após corte e barba",
     caption: "Na cadeira",
     width: "w-[74vw] sm:w-[46vw] lg:w-auto",
     aspect: "aspect-[3/4.4]",
@@ -43,7 +43,7 @@ const SHOTS: Shot[] = [
   {
     src: "/img/detalhe-ferramentas.jpg",
     lgHeight: "lg:h-[min(18vw,28svh)]",
-    alt: "Bancada de trabalho com tesouras, pentes e pincéis",
+    alt: "Bancada de trabalho da Gireh Barber Shop, com tesouras, pentes e pincéis",
     caption: "A bancada",
     width: "w-[84vw] sm:w-[56vw] lg:w-auto",
     aspect: "aspect-[16/9]",
@@ -52,7 +52,7 @@ const SHOTS: Shot[] = [
   {
     src: "/img/corte-barba.jpg",
     lgHeight: "lg:h-[min(30.6vw,46svh)]",
-    alt: "Cliente de perfil, com corte e barba feitos",
+    alt: "Cliente da Gireh Barber Shop, de perfil, com corte e barba feitos",
     caption: "Corte e barba",
     width: "w-[74vw] sm:w-[46vw] lg:w-auto",
     aspect: "aspect-[3/4]",
@@ -61,7 +61,7 @@ const SHOTS: Shot[] = [
   {
     src: "/img/acabamento.jpg",
     lgHeight: "lg:h-[min(33vw,50svh)]",
-    alt: "Acabamento de corte na nuca, finalizado",
+    alt: "Acabamento de corte na nuca, finalizado na Gireh Barber Shop",
     caption: "Acabamento",
     width: "w-[74vw] sm:w-[46vw] lg:w-auto",
     aspect: "aspect-[3/4]",

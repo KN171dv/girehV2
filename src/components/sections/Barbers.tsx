@@ -106,7 +106,7 @@ export function Barbers() {
                 >
                   <img
                     src={barber.photo}
-                    alt={`${barber.name}, barbeiro da Gireh Barber Shop, em atendimento`}
+                    alt={`${barber.name}, barbeiro na Gireh Barber Shop, em Rio das Ostras`}
                     loading="lazy"
                     className="h-full w-full object-cover grayscale transition-transform duration-500 ease-brand group-hover/photo:scale-[1.02]"
                   />

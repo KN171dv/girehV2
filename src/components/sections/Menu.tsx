@@ -65,7 +65,7 @@ export function Menu() {
                   <img
                     key={service.id}
                     src={service.photo}
-                    alt={`Resultado do serviço ${service.name} na Gireh Barber Shop`}
+                    alt={service.alt}
                     loading="lazy"
                     className={`absolute inset-0 h-full w-full object-cover transition-[opacity,scale] duration-500 ease-brand lg:will-change-transform ${
                       index === active
@@ -116,7 +116,7 @@ export function Menu() {
                   <div className="relative mt-6 aspect-[16/9] overflow-hidden md:aspect-[21/9] lg:hidden">
                     <img
                       src={service.photo}
-                      alt={`Resultado do serviço ${service.name} na Gireh Barber Shop`}
+                      alt={service.alt}
                       loading="lazy"
                       className="absolute inset-0 h-full w-full object-cover"
                     />

@@ -6,6 +6,13 @@ export type Service = {
   duration: string;
   price: number;
   photo: string;
+  /**
+   * Texto alternativo da foto do serviço. Descreve o que a imagem mostra e
+   * nomeia a barbearia — não repete "barbearia em Rio das Ostras" nos cinco,
+   * porque a mesma frase idêntica em toda foto da página lê como enchimento
+   * de palavra-chave para quem audita o HTML, não como descrição de imagem.
+   */
+  alt: string;
   /** Rótulo do botão: diz qual serviço será agendado, não só "agendar". */
   cta: string;
 };
@@ -20,6 +27,7 @@ export const SERVICES: Service[] = [
     duration: "30 min",
     price: 35,
     photo: "/img/corte-masculino.jpg",
+    alt: "Corte de cabelo masculino na Gireh Barber Shop, barbearia em Rio das Ostras",
   },
   {
     id: "barba",
@@ -29,6 +37,7 @@ export const SERVICES: Service[] = [
     duration: "20 min",
     price: 25,
     photo: "/img/barba.jpg",
+    alt: "Barba alinhada e com acabamento feito na Gireh Barber Shop",
   },
   {
     id: "corte-barba",
@@ -38,6 +47,7 @@ export const SERVICES: Service[] = [
     duration: "50 min",
     price: 55,
     photo: "/img/corte-barba.jpg",
+    alt: "Corte e barba combinados, serviço da Gireh Barber Shop",
   },
   {
     id: "sobrancelha",
@@ -47,6 +57,7 @@ export const SERVICES: Service[] = [
     duration: "15 min",
     price: 15,
     photo: "/img/sobrancelha.jpg",
+    alt: "Design de sobrancelha masculina feito na Gireh Barber Shop",
   },
   {
     id: "acabamento",
@@ -56,6 +67,7 @@ export const SERVICES: Service[] = [
     duration: "10 min",
     price: 10,
     photo: "/img/acabamento.jpg",
+    alt: "Acabamento de corte na nuca, realizado na Gireh Barber Shop",
   },
 ];
 
